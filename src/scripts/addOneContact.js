@@ -1,13 +1,18 @@
+import { faker } from '@faker-js/faker';
+import { createFakeContact } from '../utils/createFakeContact.js';
 import { readContacts } from '../utils/readContacts.js';
 import { writeContacts } from '../utils/writeContacts.js';
 
 export const addOneContact = async () => {
   try {
     const contacts = await readContacts();
-    contacts.push({ id: 7, name: 'Vicky' });
+    const contactsToAdd = faker.helpers.multiple(createFakeContact, {
+      count: 1,
+    });
+    contacts.push(...contactsToAdd);
     await writeContacts(contacts);
   } catch (err) {
-    console.error('oops', err);
+    console.error('error', err);
   }
 };
 

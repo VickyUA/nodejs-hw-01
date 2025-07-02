@@ -8,7 +8,6 @@ export const writeContacts = async (updatedContacts) => {
       JSON.stringify(updatedContacts, undefined, 2),
       'utf8',
     );
-    console.log('Дані успішно записані у файл.');
   } catch (err) {
     console.error('Помилка запису у файл:', err);
   }
